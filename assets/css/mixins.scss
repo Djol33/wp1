@@ -1,0 +1,13 @@
+@mixin textBasic($textcolor:$white){
+    color:$textcolor;
+
+}
+@mixin padding($padd:2rem){
+    box-sizing: border-box;
+    padding: 0px $padd;
+}
+@mixin flexSEA(){
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
