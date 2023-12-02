@@ -1,0 +1,6 @@
+$white:#f2f2f2;
+$red:#bf1111;
+$blue:#bf1111;
+$black:#262223;
+$background:#001f3f;
+$backgroundLighter:#002a54; 
