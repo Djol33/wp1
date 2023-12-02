@@ -555,6 +555,9 @@ html {
   html footer a {
     margin-bottom: 10px;
   }
+  html footer a img {
+    margin: 0px auto;
+  }
   html footer ul {
     margin-bottom: 10px;
   }
