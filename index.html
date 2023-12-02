@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAFFE & FACTORY</title>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
 </head>
 <body>
  
@@ -23,20 +24,65 @@
  
             </nav>
         </header>
-
-        <div id="carousel">
-            <div id="image1">
-
-            </div>
-            <div id="image2">
-
-            </div>
-            <div id="image3">
-
-            </div>
+        <div id="logo-phone">
+            <img src="assets/images/logo-edited.png" alt="logo"/>
+               
         </div>
 
+        <div id="carousel">
+            <div id="image1"  class="image-carousel">
+
+            </div>
+            <div id="image2" class="image-carousel">
+
+            </div>
+            <div id="image3" class="image-carousel">
+
+            </div>
+            <p id="prevBtn" class="arrow"> <i class="fa-solid fa-arrow-left"></i>  </p>
+            <p id="nextBtn" class="arrow"> <i class="fa-solid fa-arrow-right"></i> </p>
+        </div>
+
+        <div id="mission">
+            <p id="header">About <span class="underscore">Us</span></p>
+            <div id="mission-holder">
+            <img src="assets/images/coffee-pot6.png" alt="coffee-pot">
+            <div id="mission-text"></div>
+            </div>
+        </div>
+        <div id="news">
+            <p id="header">
+                News
+            </p>
+            <div id="news-content-wrapper">
+                
+            </div>
+        </div>
+        <div id="contact">
+            <p id="header">
+                Have a <span class="underscore">Question?</span>
+            </p>
+            <div id="contact-holder">
+
+                <form  id="contact-us-form" method="GET">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Peter"/>
+                    <label for="last-name">Last name:</label>
+                    <input type="text" name="last-name" id="last-name" placeholder="Parker"/>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="peter.parker@gmail.com"/>
+                    <label for="question">Leave a message</label>
+                    <textarea name="question" id="question" cols="50" rows="4" placeholder="Drop your question here"></textarea>
+                    <input type="submit" value ="SUBMIT" id="sub" disabled="disabled"/>
+
+                </form>
+                <img src="assets/images/have-a-question.png" alt="woman-confused">
+            </div>
+        </div>
+<footer>
+
+</footer>
     </div>
-<script type="module" src="assets/js/main.js"></script>
+<script  src="assets/js/main.js"></script>
 <script src="https://kit.fontawesome.com/104d21a00f.js" crossorigin="anonymous"></script>
 </html>
