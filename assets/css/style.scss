@@ -436,9 +436,137 @@ html{
         }
     }
 }
+#info{
+
+    width:90%;
+    padding: 0px 25px;
+    margin: 0px auto;
+    margin-top: 64px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:380px;
+    div{
+        .head{
+            font-size: 2rem;
+            margin-top: 14px;
+        }
+        h1{
+            font-size: 2rem;
+        }
+        .text{
+            font-size: 1.4rem;
+            margin-top:7px;
+        }
+    }
+    img{
+        height: 350px;
+    }
+}
+#location{
 
 
+    width: 90%;
+    margin-left:auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding:25px;
+    .active{
+        background-color: red;
+                background-color: $background;
+                border-radius: 20px;
+       
+                    color:white;
+ 
 
+    }
+    .checkbox{
+        display: inline-block;
+        margin:0px 0px 0px 10px;
+        box-sizing: border-box;
+        max-height: 30px;
+        height:32px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+             padding: 0px 10px;
+            cursor: pointer;
+
+    }
+    .checkbox:hover{
+        background-color: $background;
+                        border-radius: 20px;
+                        color:white;
+    
+    }
+    p#filter{
+        display: inline-block;
+        margin-right: 14px;
+    }
+    select{
+        width:200px;
+        height:30px;
+        text-align: left;
+        border:1px solid $background
+    }
+    .location_div{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        .locations_card{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 25px;
+            border:1px solid $background;
+            border-radius: 25px;
+            box-sizing: border-box;
+            padding:25px;
+
+            width:39%;
+            img{
+                margin-right: 25px;
+                height:70px;
+            }
+
+            .adr{
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+            a{
+                color:$black;
+                text-decoration: none;
+            }
+            .number{
+                position:absolute;
+                top:0px;
+                left:0px;
+                box-sizing: border-box;
+                width:35px;
+                height: 35px;
+                transform: translate(-50%,-30%);
+                display:flex;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: $background;
+                border-radius: 50%;
+                color:$white
+            }
+        }
+    }
+
+
+    h1{
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 25px;
+    }
+
+}
 
 
 

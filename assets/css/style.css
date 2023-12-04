@@ -413,6 +413,124 @@ html {
   display: block;
 }
 
+#info {
+  width: 90%;
+  padding: 0px 25px;
+  margin: 0px auto;
+  margin-top: 64px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 380px;
+}
+#info div .head {
+  font-size: 2rem;
+  margin-top: 14px;
+}
+#info div h1 {
+  font-size: 2rem;
+}
+#info div .text {
+  font-size: 1.4rem;
+  margin-top: 7px;
+}
+#info img {
+  height: 350px;
+}
+
+#location {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding: 25px;
+}
+#location .active {
+  background-color: red;
+  background-color: #001f3f;
+  border-radius: 20px;
+  color: white;
+}
+#location .checkbox {
+  display: inline-block;
+  margin: 0px 0px 0px 10px;
+  box-sizing: border-box;
+  max-height: 30px;
+  height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+#location .checkbox:hover {
+  background-color: #001f3f;
+  border-radius: 20px;
+  color: white;
+}
+#location p#filter {
+  display: inline-block;
+  margin-right: 14px;
+}
+#location select {
+  width: 200px;
+  height: 30px;
+  text-align: left;
+  border: 1px solid #001f3f;
+}
+#location .location_div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+#location .location_div .locations_card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 25px;
+  border: 1px solid #001f3f;
+  border-radius: 25px;
+  box-sizing: border-box;
+  padding: 25px;
+  width: 39%;
+}
+#location .location_div .locations_card img {
+  margin-right: 25px;
+  height: 70px;
+}
+#location .location_div .locations_card .adr {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+#location .location_div .locations_card a {
+  color: #262223;
+  text-decoration: none;
+}
+#location .location_div .locations_card .number {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  box-sizing: border-box;
+  width: 35px;
+  height: 35px;
+  transform: translate(-50%, -30%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #001f3f;
+  border-radius: 50%;
+  color: #f2f2f2;
+}
+#location h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 25px;
+}
+
 @media screen and (max-width: 1366px) {
   html #mission #mission-holder {
     width: 100% !important;
@@ -488,10 +606,25 @@ html {
   html #carousel i {
     font-size: 0.7rem;
   }
+  #location {
+    width: 100%;
+  }
+  #location select {
+    width: 100px;
+  }
+  #location .location_div .locations_card {
+    width: 45%;
+  }
+  #location .location_div .locations_card .adr {
+    font-size: 1rem !important;
+  }
+  #info img {
+    height: 150px;
+  }
 }
 @media screen and (max-width: 480px) {
   html {
-    font-size: 10px;
+    font-size: 12px !important;
   }
   html #logo-phone {
     display: block !important;
@@ -526,39 +659,77 @@ html {
   html #wrapper header ul li a .fa-solid {
     display: block;
   }
-  html #news-content-wrapper .card {
+  html #wrapper #contact #contact-holder {
+    width: 100%;
+  }
+  html #wrapper #contact #contact-holder form {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 25px 25px 25px;
+  }
+  html #wrapper #contact #contact-holder form input, html #wrapper #contact #contact-holder form textarea {
+    width: 100% !important;
+  }
+  html #wrapper #contact #contact-holder form input#sub, html #wrapper #contact #contact-holder form textarea#sub {
+    width: initial !important;
+  }
+  html #wrapper #news-content-wrapper .card {
     width: 90%;
   }
-  html #news-content-wrapper .card .content-wrap {
+  html #wrapper #news-content-wrapper .card .content-wrap {
     z-index: 5 !important;
   }
-  html .overlay .holder {
+  html #wrapper .overlay .holder {
     width: 100%;
     height: 100%;
     border-radius: 0px;
   }
-  html #news #news-content-wrapper {
+  html #wrapper #news #news-content-wrapper {
     flex-direction: column;
   }
-  html #news #news-content-wrapper .card {
+  html #wrapper #news #news-content-wrapper .card {
     width: 90% !important;
     margin-bottom: 25px;
   }
-  html #news #news-content-wrapper .card:last-child {
+  html #wrapper #news #news-content-wrapper .card:last-child {
     margin-bottom: 0px;
   }
-  html footer {
+  html #wrapper footer {
     margin-bottom: 60px;
     flex-direction: column;
     justify-content: space-evenly;
   }
-  html footer a {
+  html #wrapper footer a {
     margin-bottom: 10px;
   }
-  html footer a img {
+  html #wrapper footer a img {
     margin: 0px auto;
   }
-  html footer ul {
+  html #wrapper footer ul {
     margin-bottom: 10px;
+  }
+  #location {
+    width: 100%;
+  }
+  #location .location_div {
+    justify-content: space-evenly;
+  }
+  #location .location_div .locations_card {
+    width: 100%;
+  }
+  #location .location_div .locations_card .adr {
+    font-size: 1rem !important;
+  }
+  #info {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #info img {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

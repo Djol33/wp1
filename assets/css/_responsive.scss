@@ -104,12 +104,31 @@
         }
        
     }
+    #location{
+        select{
+            width:100px
+        }
+        width:100%;
+        .location_div{
+            .locations_card{
+                width:45%;
+                .adr{
+                    font-size: 1rem !important;
+                }
+            }
+        }
+    }
+    #info{
+        img{
+            height: 150px;
+        }
+    }
 
 }
 
 @media screen and (max-width:480px) {
     html{
-        font-size: 10px;
+        font-size: 12px !important;
         #logo-phone{
             display: block !important;
             box-sizing: border-box;
@@ -150,7 +169,24 @@
                     }
                 }
             }
+            #contact{
+                #contact-holder{
+                    width:100%;
+                form{
+                    width:100%;
+                    box-sizing: border-box;
+                    padding:0 25px 25px 25px;
+                    input, textarea{
+                        width: 100% !important;
+                        &#sub{
+                            width:initial !important;
+
+                        }
+                    }
+                }
+            }
         }
+    
         #news-content-wrapper{
             .card{
  
@@ -197,6 +233,30 @@
             }
         }
     }
-
+    }
+    #location{
+ 
+        width:100%;
+        .location_div{
+            justify-content: space-evenly;
+            .locations_card{
+                width:100%;
+                .adr{
+                    font-size: 1rem !important;
+                }
+            }
+        }
+    }
+    #info{
+        width:100%;
+        justify-content: flex-start;
+        margin-top: 25px;
+        margin-left: 0px;
+        margin-right:0px;
+        height: fit-content;
+        img{
+            display: none;
+        }
+    }
 
 }  
