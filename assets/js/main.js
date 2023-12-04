@@ -1,10 +1,10 @@
 
  window.addEventListener("load", function(){
-
-
+    dinamickiMeni()
+    if(this.window.location.pathname=="/" || this.window.location.pathname =="/index.html" ){
     /* DINAMICKI MENI */
 
-    dinamickiMeni()
+
     animatedCarousel()
     scalableImages()
     addContentAboutUs()
@@ -13,13 +13,18 @@
         scalableImages()
  
 })
+
     addNews()
     validateContactForm()
-
+}
+else if(this.window.location.pathname =="/contact-us.html"){
+    locationInfo()
+    caffeeLocation()
+}
     footer()
 
 
-})
+}) 
 
 
 function dinamickiMeni(){
@@ -55,19 +60,26 @@ function dinamickiMeni(){
     })
 }
 function trenutnaStranicaPodudaraSe(strana){
-    let trenutna_stranica_url = window.location.pathname
+    try{
     let reg = /(?<=\/)[\w\d_\-]+(\.html)$/;
 
     if(trenutnaStranica()[0] == strana) return true;
+    }catch{
     return false;
-
+    }
 
 
 }
 function trenutnaStranica(){
+    try{
     let trenutna_stranica_url = window.location.pathname
+
     let reg = /(?<=\/)[\w\d_\-]+(\.html)$/;
     return (reg.exec(trenutna_stranica_url))
+    }
+    catch{
+        return 0
+    }
 }
 
  function scalableImages(){
@@ -476,4 +488,372 @@ function footer(){
     })
     footer.appendChild(div2)
 
+}
+
+
+function caffeeLocation(){
+    let citiesInfo = {
+
+        Beograd: {
+          0: {
+            address: "Knez Mihailova 1",
+            p_vreme: "09:00",
+            k_vreme: "17:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          1: {
+            address: "Terazije 3",
+            p_vreme: "10:30",
+            k_vreme: "18:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          2: {
+            address: "Kralja Petra 7",
+            p_vreme: "08:00",
+            k_vreme: "16:30",
+            kontakt: "0645556677",
+            rate:4
+          },
+          3: {
+            address: "Vuka Karadzica 13",
+            p_vreme: "09:45",
+            k_vreme: "19:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          4: {
+            address: "Nikole Pasica 22",
+            p_vreme: "07:30",
+            k_vreme: "15:45",
+            kontakt: "0645556677",
+            rate:4
+          }
+        },
+        Loznica: {
+          0: {
+            address: "Trg Jovana Cvijića 5",
+            p_vreme: "08:45",
+            k_vreme: "16:30",
+            kontakt: "0645556677",
+            rate:5
+          },
+          1: {
+            address: "Karađorđeva 10",
+            p_vreme: "11:00",
+            k_vreme: "19:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          2: {
+            address: "Vilzonova 21",
+            p_vreme: "09:30",
+            k_vreme: "17:45",
+            kontakt: "0645556677",
+            rate:3
+          }
+        },
+        "Novi Sad": {
+          0: {
+            address: "Bulevar Mihajla Pupina 9",
+            p_vreme: "08:30",
+            k_vreme: "16:45",
+            kontakt: "0645556677",
+            rate:5
+          },
+          1: {
+            address: "Trg slobode 7",
+            p_vreme: "10:15",
+            k_vreme: "18:30",
+            kontakt: "0645556677",
+            rate:4
+          },
+          2: {
+            address: "Masarikova 7",
+            p_vreme: "09:00",
+            k_vreme: "17:15",
+            kontakt: "0645556677",
+            rate:5
+          },
+          3: {
+            address: "Gajeva 1",
+            p_vreme: "11:30",
+            k_vreme: "20:00",
+            kontakt: "0645556677"
+          }
+        },
+        Nis: {
+          0: {
+            address: "Obrenoviceva 11",
+            p_vreme: "09:15",
+            k_vreme: "17:45",
+            kontakt: "0645556677",
+            rate:5
+          },
+          1: {
+            address: "Voždova 18",
+            p_vreme: "11:30",
+            k_vreme: "20:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          2: {
+            address: "Dušanova 71",
+            p_vreme: "08:00",
+            k_vreme: "16:00",
+            kontakt: "0645556677",
+            rate:4
+          },
+          3: {
+            address: "Radnicka 50",
+            p_vreme: "10:45",
+            k_vreme: "19:30",
+            kontakt: "0645556677",
+            rate:3
+          }
+        },
+        Kragujevac: {
+          0: {
+            address: "Trg 1",
+            p_vreme: "09:00",
+            k_vreme: "17:30",
+            kontakt: "0645556677",
+            rate:5
+          },
+          1: {
+            address: "Jadranska 3",
+            p_vreme: "08:15",
+            k_vreme: "16:45",
+            kontakt: "0645556677",
+            rate:2
+          },
+          2: {
+            address: "Rujevicka 1",
+            p_vreme: "10:30",
+            k_vreme: "19:00",
+            kontakt: "0645556677",
+            rate:5
+          },
+          3: {
+            address: "Centar 4",
+            p_vreme: "07:45",
+            k_vreme: "15:30",
+            kontakt: "0645556677",
+            rate:3
+          }
+        },
+        Obrenovac: {
+          0: {
+            address: "Gandijeva 3",
+            p_vreme: "08:30",
+            k_vreme: "16:00",
+            kontakt: "0645556677",
+            rate:3
+          },
+          1: {
+            address: "Ulica 4",
+            p_vreme: "10:00",
+            k_vreme: "11:30",
+            kontakt: "0645556677",
+            rate:2
+          }
+        },
+        staticElement:{
+            number:1
+        }
+      };
+      let loc = document.querySelector("#location")
+      let p_filter = document.createElement("p")
+      p_filter.id="filter"
+      p_filter.innerText = "Filter: "
+      loc.appendChild(p_filter)
+      let select = document.createElement("select")
+      let opt_def = document.createElement("option")
+      opt_def.innerHTML="All Cities"
+      opt_def.value = "All Cities"
+      select.appendChild(opt_def)
+      Object.keys(citiesInfo).forEach((element)=>{
+        if(element != "staticElement"){
+        let opt = document.createElement("option")
+        opt.value = element
+        opt.innerHTML=element
+        select.appendChild(opt)
+        }
+      })
+      
+      loc.appendChild(select)
+      // OPEN NOW 
+      let checkbox = document.createElement("p")
+      checkbox.innerHTML = "Open Now"
+      checkbox.classList.add("checkbox")
+      loc.appendChild(checkbox)
+      let z = 0
+      checkbox.addEventListener("click", function(){
+
+        z+=1
+        console.log(z)
+        checkbox.classList.toggle("active")
+        if(z%2 == 1){
+            let cards = document.querySelectorAll(".locations_card")
+
+            cards.forEach((element)=>{
+                let time = element.querySelector(".workHours")
+                let splitTime = time.innerHTML.split(":")
+                splitTime = splitTime.map((element)=>{return parseInt(element)})
+
+                let day = new Date()
+                let hours = parseInt(day.getHours())
+                let minutes = parseInt(day.getMinutes())
+            
+                if(splitTime[0]<hours && hours <splitTime[2]){
+                    element.style.display = "flex"
+                }
+                else if(splitTime[0] == hours){
+                    if(splitTime[1] <minutes){
+                        element.style.display = "flex"
+                    }
+                }
+                else if( splitTime[2] == hours){
+                    if(minutes <splitTime[3]){
+                        element.style.display = "flex"
+                    }
+                }
+                else{
+                    element.style.display = "none"
+                }
+
+
+
+
+            })
+        }
+        else{
+            let cards = document.querySelectorAll(".locations_card")
+            cards.forEach((element)=>{
+                element.style.display = "flex"
+            })
+        }
+      })
+
+      select.addEventListener("input", function(){
+        let list = loc.querySelectorAll(".location_div")
+        list.forEach((element)=>{
+            if(element.getAttribute("data-bs-city") == this.value){
+                element.style.display ="flex"
+            }
+            else if(this.value == "All Cities"){
+                element.style.display = "flex"
+            }
+            else{
+                element.style.display="none"
+            }
+        })
+        let header = loc.querySelectorAll("h1")
+        header.forEach((element)=>{
+            if(element.innerText == this.value){
+                element.style.display ="flex"
+            }
+            else if(this.value == "All Cities"){
+                element.style.display = "flex"
+            }
+            else{
+                element.style.display="none"
+            }
+            
+        })
+      })
+      Object.keys(citiesInfo).forEach((element, i)=>{
+        if(element != "staticElement"){
+        let header = document.createElement("h1")
+        header.innerText = element
+        loc.appendChild(header)
+        let holder_caffee = document.createElement("div")
+        holder_caffee.setAttribute("data-bs-city", element)
+        Object.values(citiesInfo[element]).forEach((el)=>{
+          let card = document.createElement("div")
+          card.classList.add("locations_card")
+          let adr = document.createElement("p")
+          adr.classList.add("adr")
+          adr.innerHTML = el["address"]
+          card.setAttribute("data-bs-rate", el["rate"])
+          
+          let holder_div = document.createElement("div")
+          holder_div.appendChild(adr)
+          let workHours = document.createElement("p")
+          workHours.classList.add("workHours")
+          workHours.innerHTML = el["p_vreme"] + " : " + el["k_vreme"]
+          holder_div.appendChild(workHours)
+
+            //phone
+            let link = document.createElement("a")
+            link.href=`tel:${el["kontakt"]}`
+
+            let phone = document.createElement("i")
+            phone.classList.add("fa-solid","fa-phone")
+            link.appendChild(phone)
+            link.innerHTML += " " + el["kontakt"]
+            holder_div.appendChild(link)
+            let img = document.createElement("img")
+            img.src = "assets/images/cog.png"
+            card.appendChild(img)
+            card.appendChild(holder_div)
+            let number = document.createElement("div")
+            number.classList.add("number")
+            number.innerHTML = citiesInfo["staticElement"]["number"]++
+            card.appendChild(number)
+          holder_caffee.appendChild(card)
+        })
+        holder_caffee.classList.add("location_div")
+        header.insertAdjacentElement("afterend", holder_caffee)
+
+      }
+    }
+      )
+
+
+}
+function locationInfo(){
+    //holder
+    let block = document.querySelector("#info")
+    let blockText = document.createElement("div")
+    let blockImage = document.createElement("img")
+    blockImage.src = "assets/images/woman-coffee.png"
+    blockImage.alt = "woman-with-coffee"
+
+    let h1 = document.createElement("h1")
+    h1.innerHTML="Headquarters"
+    //Adress
+    let address = document.createElement("p")
+    address.innerText = "Mije Kovacevica 7"
+    address.classList.add("text")
+    //Email
+    let email = document.createElement("h2")
+    email.innerText="Email contact"
+    email.classList.add("head")
+    let emailAdress = document.createElement("p")
+    emailAdress.innerText = "email@gmail.com"
+    emailAdress.classList.add("text")
+    
+    //Phone
+    let phone = document.createElement("h2")
+    phone.classList.add("head")
+    phone.innerText = "Phone Number:"
+    let phoneNumber = document.createElement("p")
+    phoneNumber.innerText = "+3811234567"
+    phoneNumber.classList.add("text")
+
+
+
+    blockText.appendChild(h1)
+    blockText.appendChild(address)
+    blockText.appendChild(email)
+    blockText.appendChild(emailAdress)
+    blockText.appendChild(phone)
+    blockText.appendChild(phoneNumber)
+
+
+
+    block.appendChild(blockText)
+    block.appendChild(blockImage)
 }
