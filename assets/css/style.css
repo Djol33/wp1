@@ -13,7 +13,7 @@ html {
   background-color: #f2f2f2;
 }
 #wrapper header {
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   width: 100%;
   background-color: #001f3f;
   box-sizing: border-box;
@@ -644,7 +644,7 @@ html {
   html #wrapper header {
     position: fixed;
     z-index: 10;
-    bottom: 0px;
+    top: calc(100vh - 64px);
     left: 0px;
     padding: 0px;
   }

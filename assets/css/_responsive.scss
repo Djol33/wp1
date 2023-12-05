@@ -148,7 +148,7 @@
             header{
                 position:fixed;
                 z-index: 10;
-                bottom:0px;
+                top:calc(100vh - 64px);
                 left:0px;
                 padding:0px;
                 nav{
