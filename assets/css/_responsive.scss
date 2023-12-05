@@ -147,8 +147,8 @@
         #wrapper{
             header{
                 position:fixed;
-                z-index: 10;
-                top:calc(100vh - 64px);
+  
+                top:calc(100vh - 128px) !important;
                 left:0px;
                 padding:0px;
                 nav{
