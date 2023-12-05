@@ -643,7 +643,7 @@ html {
   }
   html #wrapper header {
     position: fixed;
-    top: calc(100vh - 128px) !important;
+    top: calc(100vh - 64px) !important;
     left: 0px;
     padding: 0px;
   }
