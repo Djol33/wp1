@@ -692,7 +692,7 @@ function caffeeLocation(){
       checkbox.addEventListener("click", function(){
 
         z+=1
-        console.log(z)
+
         checkbox.classList.toggle("active")
         if(z%2 == 1){
             let cards = document.querySelectorAll(".locations_card")
@@ -705,7 +705,7 @@ function caffeeLocation(){
                 let day = new Date()
                 let hours = parseInt(day.getHours())
                 let minutes = parseInt(day.getMinutes())
-            
+
                 if(splitTime[0]<hours && hours <splitTime[2]){
                     element.style.display = "flex"
                 }
@@ -713,10 +713,16 @@ function caffeeLocation(){
                     if(splitTime[1] <minutes){
                         element.style.display = "flex"
                     }
+                    else{
+                        element.style.display = "none"
+                    }
                 }
                 else if( splitTime[2] == hours){
                     if(minutes <splitTime[3]){
                         element.style.display = "flex"
+                    }
+                    else{
+                        element.style.display = "none"
                     }
                 }
                 else{
