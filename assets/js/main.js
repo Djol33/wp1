@@ -17,7 +17,7 @@
     addNews()
     validateContactForm()
 }
-else if(this.window.location.pathname =="/contact-us.html"){
+else if(this.window.location.pathname =="/locations.html"){
     locationInfo()
     caffeeLocation()
 }
@@ -28,8 +28,8 @@ else if(this.window.location.pathname =="/contact-us.html"){
 
 
 function dinamickiMeni(){
-    let stranice = [["Home" , `<i class="fa-solid fa-mug-hot"></i>`], ["Location", `<i class="fa-solid fa-location-dot"></i>` ], ["Author",`<i class="fa-solid fa-user"></i>`]]
-    let html_stranice = [ "index.html",  "contact-us.html", "author.html"]
+    let stranice = [["Home" , `<i class="fa-solid fa-mug-hot"></i>`], ["Locations", `<i class="fa-solid fa-location-dot"></i>` ], ["Author",`<i class="fa-solid fa-user"></i>`]]
+    let html_stranice = [ "index.html",  "locations.html", "author.html"]
     let mapa = new Map();
 
     for(let i in stranice){
@@ -450,8 +450,8 @@ function validateContactForm(){
 }
 function footer(){
     let footer = document.querySelector('footer')
-    let stranice = ["Home" ,  "Location" , "Author"]
-    let html_stranice = [ "index.html",   "contact-us.html", "author.html"]
+    let stranice = ["Home" ,  "Locations" , "Author"]
+    let html_stranice = [ "index.html",  "locations.html", "author.html"]
     let mapa = new Map();
 
     for(let i in stranice){
@@ -820,46 +820,35 @@ function caffeeLocation(){
 
 }
 function locationInfo(){
-    //holder
-    let block = document.querySelector("#info")
-    let blockText = document.createElement("div")
-    let blockImage = document.createElement("img")
-    blockImage.src = "assets/images/woman-coffee.png"
-    blockImage.alt = "woman-with-coffee"
 
-    let h1 = document.createElement("h1")
-    h1.innerHTML="Headquarters"
-    //Adress
-    let address = document.createElement("p")
-    address.innerText = "Mije Kovacevica 7"
-    address.classList.add("text")
-    //Email
-    let email = document.createElement("h2")
-    email.innerText="Email contact"
-    email.classList.add("head")
-    let emailAdress = document.createElement("p")
-    emailAdress.innerText = "email@gmail.com"
-    emailAdress.classList.add("text")
+    let block = $("#info");
+    let blockText = $("<div></div>");
+    let blockImage = $("<img/>");
+    blockImage.attr("src", "assets/images/woman-coffee.png");
+    blockImage.attr("alt", "woman-with-coffee");
     
-    //Phone
-    let phone = document.createElement("h2")
-    phone.classList.add("head")
-    phone.innerText = "Phone Number:"
-    let phoneNumber = document.createElement("p")
-    phoneNumber.innerText = "+3811234567"
-    phoneNumber.classList.add("text")
-
-
-
-    blockText.appendChild(h1)
-    blockText.appendChild(address)
-    blockText.appendChild(email)
-    blockText.appendChild(emailAdress)
-    blockText.appendChild(phone)
-    blockText.appendChild(phoneNumber)
-
-
-
-    block.appendChild(blockText)
-    block.appendChild(blockImage)
+    let h1 = $("<h1>Headquarters</h1>");
+    
+    // Address
+    let address = $("<p>Mije Kovacevica 7</p>");
+    address.addClass("text");
+    
+    // Email
+    let email = $("<h2>Email contact</h2>");
+    email.addClass("head");
+    let emailAddress = $("<p>email@gmail.com</p>");
+    emailAddress.addClass("text");
+    
+    // Phone
+    let phone = $("<h2>Phone Number:</h2>");
+    phone.addClass("head");
+    let phoneNumber = $("<p>+3811234567</p>");
+    phoneNumber.addClass("text");
+    
+    blockText.append(h1, address, email, emailAddress, phone, phoneNumber);
+    
+    block.append(blockText);
+    block.append(blockImage);
+    
 }
+ 
