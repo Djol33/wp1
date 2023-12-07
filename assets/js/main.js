@@ -28,8 +28,8 @@ else if(this.window.location.pathname =="/contact-us.html"){
 
 
 function dinamickiMeni(){
-    let stranice = [["Home" , `<i class="fa-solid fa-mug-hot"></i>`],["Shop", `<i class="fa-solid fa-cart-shopping"></i>`], ["Location", `<i class="fa-solid fa-location-dot"></i>` ], ["Author",`<i class="fa-solid fa-user"></i>`]]
-    let html_stranice = [ "index.html", "shop.html", "contact-us.html", "author.html"]
+    let stranice = [["Home" , `<i class="fa-solid fa-mug-hot"></i>`], ["Location", `<i class="fa-solid fa-location-dot"></i>` ], ["Author",`<i class="fa-solid fa-user"></i>`]]
+    let html_stranice = [ "index.html",  "contact-us.html", "author.html"]
     let mapa = new Map();
 
     for(let i in stranice){
@@ -450,8 +450,8 @@ function validateContactForm(){
 }
 function footer(){
     let footer = document.querySelector('footer')
-    let stranice = ["Home" ,"Shop", "Location" , "Author"]
-    let html_stranice = [ "index.html", "shop.html", "contact-us.html", "author.html"]
+    let stranice = ["Home" ,  "Location" , "Author"]
+    let html_stranice = [ "index.html",   "contact-us.html", "author.html"]
     let mapa = new Map();
 
     for(let i in stranice){
