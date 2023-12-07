@@ -99,7 +99,7 @@ html {
   position: relative;
 }
 #wrapper #carousel #image1 {
-  background-image: url("../images/wallpaper1_8.jpg");
+  background-image: url("../images/wallpaper1.jpg");
   height: 100%;
   background-size: cover;
   background-position: center bottom;
