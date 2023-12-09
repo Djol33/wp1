@@ -1,8 +1,9 @@
 
  window.addEventListener("load", function(){
     dinamickiMeni()
+    jqueryPluginImp()
     if(this.window.location.pathname=="/" || this.window.location.pathname =="/index.html" ){
-    /* DINAMICKI MENI */
+
 
 
     animatedCarousel()
@@ -1130,4 +1131,26 @@ function ourCoffee(){
         coffee_holder.appendChild(coffee_card)
 
     }
+}
+function jqueryPluginImp(){
+    let star = document.createElement("a")
+    star.id="backtothetop-fixed"
+    let i = document.createElement("i")
+    i.classList.add("fa-solid","fa-arrow-up")
+    star.href="#logo-phone"
+    star.setAttribute("data-backtothetop-fixed-fadeIn", "fast")
+    star.setAttribute("data-backtothetop-fixed-fadeOut", "fast")
+    star.setAttribute("data-backtothetop-fixed-scroll-offset", 200)
+    star.setAttribute("data-backtothetop-scrolltop", 0)
+    if(window.innerWidth>480){
+    star.setAttribute("data-backtothetop-fixed-bottom", 50)
+    star.setAttribute("data-backtothetop-fixed-right", 50)}
+    else{
+        star.setAttribute("data-backtothetop-fixed-bottom", 84)
+    star.setAttribute("data-backtothetop-fixed-right", 20)
+    }
+    star.appendChild(i)
+ 
+    let wrapper = document.querySelector("#wrapper")
+    wrapper.appendChild(star);
 }
