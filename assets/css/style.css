@@ -7,10 +7,27 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 #wrapper {
+  position: relative;
   background-color: #f2f2f2;
+}
+#wrapper #backtothetop-fixed {
+  color: #001f3f;
+  background-color: #f2f2f2;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 2rem;
 }
 #wrapper header {
   backface-visibility: hidden;
@@ -849,5 +866,11 @@ html {
   }
   #coffee .coffee_card {
     width: 90%;
+  }
+  #wrapper #backtothetop-fixed {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    font-size: 1rem;
   }
 }/*# sourceMappingURL=style.css.map */
