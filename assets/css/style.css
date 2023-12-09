@@ -289,7 +289,7 @@ html {
 #wrapper #contact #contact-holder form label {
   margin-top: 12px;
 }
-#wrapper #contact #contact-holder form input {
+#wrapper #contact #contact-holder form input, #wrapper #contact #contact-holder form select {
   margin-top: 6px;
   box-sizing: border-box;
   padding: 5px;
@@ -299,13 +299,20 @@ html {
   color: #001f3f;
   border: 1px solid #001f3f;
 }
-#wrapper #contact #contact-holder form input#sub {
+#wrapper #contact #contact-holder form input#sub, #wrapper #contact #contact-holder form select#sub {
   width: -moz-fit-content;
   width: fit-content;
   box-sizing: border-box;
   margin-top: 12px;
   padding: 4px 12px;
   margin-bottom: 25px;
+}
+#wrapper #contact #contact-holder form select {
+  margin-top: 12px;
+  color: #262223;
+}
+#wrapper #contact #contact-holder form p#error_city {
+  text-align: center;
 }
 #wrapper #contact #contact-holder form textarea#question {
   margin-top: 6px;
@@ -327,6 +334,36 @@ html {
           text-decoration: underline #bf1111;
   padding-bottom: 2px;
   box-sizing: content-box;
+}
+#wrapper #contact #contact-holder form #holder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#wrapper #contact #contact-holder form #holder #abs {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #contact #contact-holder form #holder2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 300px;
+  margin-top: 12px;
+}
+#wrapper #contact #contact-holder form #holder2 input[type=checkbox] {
+  width: initial;
+  padding: 0px;
+  height: initial;
+  margin-right: 12px;
+  margin-top: 0px;
+}
+#wrapper #contact #contact-holder form #holder2 label {
+  margin-top: 0px;
 }
 #wrapper footer {
   display: flex;
