@@ -347,6 +347,52 @@ function validateContactForm(){
     let lname = document.querySelector("#last-name")
     let email = document.querySelector("#email")
     let question = document.querySelector("#question")
+    let sub = document.querySelector("#sub")
+    let cover = document.querySelector("#abs");
+    let dropandcheck = document.querySelector("#dropandcheck")
+    {
+        // block for adding select and check
+        let sel = document.createElement("select")
+        sel.id = "city"
+        let nizGradova = ["Beograd", "Sabac", "Novi Sad", "Nis", "Loznica", "Obrenovac"]
+        let opt = document.createElement("option");
+        opt.value = 0;
+        opt.innerText = "City"
+       // opt.setAttribute("disabled", "disabled")
+        opt.setAttribute("selected", "selected")
+        opt.setAttribute("disabled", "disabled")
+        sel.appendChild(opt)
+        for(let i in nizGradova){
+            opt = document.createElement("option")
+            opt.value = Number(i)+1;
+            opt.innerText = nizGradova[i]
+            sel.appendChild(opt)
+        }
+        dropandcheck.appendChild(sel)
+    }
+    let sel = document.querySelector("#city")
+ 
+    let sel_city_err = () =>{
+        let sel = document.querySelector("#city")
+        if(Number(sel.value)){
+            if(document.querySelector("#error_city")) document.querySelector("#error_city").remove()
+        return true;
+        }
+    else{
+        if(!document.querySelector("#error_city")) {
+        let city_error = document.createElement("p")
+        city_error.id = "error_city"
+        city_error.innerText = "Select a city"
+        sel.insertAdjacentElement("afterend" , city_error)
+        }
+        return false;
+    }
+    }
+    let city = () => {
+        let city = document.querySelector("#city")
+        if(Number(city.value)) return true
+        return false
+    }
     let name_val = () =>{
         let name= document.querySelector("#name")
         let reg = /^[A-Z][a-z]{1,9}(\s[A-Z][a-z]{1,9})*$/
@@ -369,14 +415,52 @@ function validateContactForm(){
         }
         return false
     }
+    let checkedToS = () =>{
+        let checkbox = document.querySelector("#checkbox_terms")
+        if(checkbox.checked) return true;
+        return false;
+    }
+
+
     form.addEventListener("input", function(){
+ 
         let submit = document.querySelector("#sub")
-        if(name_val() && lname_val && email_val() && question_val()){
+
+        if(name_val() && lname_val && email_val() && question_val() && sel_city_err() && checkedToS()){
             submit.removeAttribute("disabled")
+            if(document.querySelector("#err_sub")){
+                document.querySelector("#err_sub").remove();
+            }
+            cover.style.zIndex = -1;
+           
         }
         else{
             submit.setAttribute("disabled", "disabled")
+            
+ 
         }
+    })
+    cover.addEventListener("click", function(){
+        let submit = document.querySelector("#sub")
+
+        if(city() && name_val() && lname_val && email_val() && question_val() && checkedToS() ){
+ 
+            cover.style.zIndex=-1;
+            if(document.querySelector("#err_sub"))  document.querySelector("#err_sub").remove()
+        }
+        else{
+            if(!document.querySelector("#err_sub")){ 
+            let p  = document.createElement("p")
+            p.id = "err_sub"
+            p.innerHTML = "All Fields are required"
+            submit.insertAdjacentElement("beforebegin", p)
+            cover.style.zIndex = 5;
+            }
+        }
+    })
+    sel.addEventListener("change", function(){
+        sel_city_err()
+
     })
     fname.addEventListener("input", function(){
         if(!name_val()){
@@ -395,7 +479,41 @@ function validateContactForm(){
             a.remove()
         }
     })
+    fname.addEventListener("focus", function(){
+        if(!name_val()){
+            if(document.querySelector("#err_fname")){
+
+            }
+            else{
+                let err = document.createElement("p")
+                err.id = "err_fname"
+                err.innerText = 'Must start with capital letter, without special characters and unnecesary spaces'
+                this.insertAdjacentElement("afterend", err)
+            }
+        }
+        else if(document.querySelector("#err_fname")){
+            let a =document.querySelector("#err_fname")
+            a.remove()
+        }
+    })
     lname.addEventListener("input", function(){
+        if(!lname_val()){
+            if(document.querySelector("#err_lname")){
+
+            }
+            else{
+                let err = document.createElement("p")
+                err.id = "err_lname"
+                err.innerText = 'Must start with capital letter, without special characters and unnecesary spaces'
+                this.insertAdjacentElement("afterend", err)
+            }
+        }
+        else if(document.querySelector("#err_lname")){
+            let a =document.querySelector("#err_lname")
+            a.remove()
+        }
+    })
+    lname.addEventListener("focus", function(){
         if(!lname_val()){
             if(document.querySelector("#err_lname")){
 
@@ -430,7 +548,42 @@ function validateContactForm(){
             a.remove()
         }
     })
+    email.addEventListener("focus", function(){
+        if(!email_val()){
+            if(document.querySelector("#err_email")){
+
+            }
+            else{
+                let err = document.createElement("p")
+                err.id = "err_email"
+                err.innerText = 'Wrong format of email'
+                this.insertAdjacentElement("afterend", err)
+            }
+            
+        }
+        else if(document.querySelector("#err_email")){
+            let a =document.querySelector("#err_email")
+            a.remove()
+        }
+    })
     question.addEventListener("input", function(){
+        if(!question_val()){
+            if(document.querySelector("#err_question")){
+
+            }
+            else{
+                let err = document.createElement("p")
+                err.id = "err_question"
+                err.innerText = 'Must be at least 15 characters long'
+                this.insertAdjacentElement("afterend", err)
+            }
+        }
+        else if(document.querySelector("#err_question")){
+            let a =document.querySelector("#err_question")
+            a.remove()
+        }
+    })
+    question.addEventListener("focus", function(){
         if(!question_val()){
             if(document.querySelector("#err_question")){
 
