@@ -524,6 +524,13 @@ html {
   justify-content: space-between;
   align-items: center;
 }
+#location .location_div .nothingOpen {
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100% !important;
+  font-style: italic;
+  margin-top: 12px;
+}
 #location .location_div .locations_card {
   position: relative;
   display: flex;
@@ -536,6 +543,9 @@ html {
   padding: 25px;
   width: 39%;
 }
+#location .location_div .locations_card .telefon {
+  margin-top: 7px;
+}
 #location .location_div .locations_card img {
   margin-right: 25px;
   height: 70px;
@@ -544,9 +554,16 @@ html {
   font-size: 1.4rem;
   font-weight: bold;
 }
+#location .location_div .locations_card .vreme {
+  font-size: 1rem;
+  margin-top: 7px;
+}
 #location .location_div .locations_card a {
   color: #262223;
   text-decoration: none;
+}
+#location .location_div .locations_card i {
+  margin-right: 4px;
 }
 #location .location_div .locations_card .number {
   position: absolute;
@@ -562,6 +579,9 @@ html {
   background-color: #001f3f;
   border-radius: 50%;
   color: #f2f2f2;
+}
+#location .location_div h1 {
+  width: 100%;
 }
 #location h1 {
   text-align: center;
@@ -704,11 +724,28 @@ html {
     box-sizing: border-box;
     padding: 0 25px 25px 25px;
   }
-  html #wrapper #contact #contact-holder form input, html #wrapper #contact #contact-holder form textarea {
+  html #wrapper #contact #contact-holder form #holder2 {
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  html #wrapper #contact #contact-holder form #dropandcheck {
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  html #wrapper #contact #contact-holder form input, html #wrapper #contact #contact-holder form textarea, html #wrapper #contact #contact-holder form select {
     width: 100% !important;
   }
-  html #wrapper #contact #contact-holder form input#sub, html #wrapper #contact #contact-holder form textarea#sub {
+  html #wrapper #contact #contact-holder form input#sub, html #wrapper #contact #contact-holder form textarea#sub, html #wrapper #contact #contact-holder form select#sub {
     width: initial !important;
+  }
+  html #wrapper #contact #contact-holder form input[type=checkbox] {
+    width: initial !important;
+    padding: 0px;
+    height: initial;
+    margin-right: 12px;
+    margin-top: 0px;
   }
   html #wrapper #news-content-wrapper .card {
     width: 90%;

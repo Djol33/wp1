@@ -176,12 +176,29 @@
                     width:100%;
                     box-sizing: border-box;
                     padding:0 25px 25px 25px;
-                    input, textarea{
+                    #holder2{
+                        width:100%;
+                        padding: 0px;
+                        box-sizing: border-box; 
+                    }
+                    #dropandcheck{
+                        width:100%;
+                        padding: 0px;
+                        box-sizing: border-box;
+                    }
+                    input, textarea, select{
                         width: 100% !important;
                         &#sub{
                             width:initial !important;
 
                         }
+                    }
+                    input[type=checkbox]{
+                        width: initial !important; 
+                        padding: 0px;
+                        height: initial;
+                        margin-right:12px;
+                        margin-top:0px;
                     }
                 }
             }

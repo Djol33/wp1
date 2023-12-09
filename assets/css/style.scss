@@ -331,7 +331,7 @@ html{
                 p#error_city{
          
                         text-align: center;
-                    1`
+                    
                 }
 
                 textarea#question{
@@ -558,6 +558,14 @@ html{
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        .nothingOpen{
+            font-size: 1.2rem;
+            text-align: center;
+            width:100% !important;
+            font-style:italic;
+            margin-top: 12px;
+        }
+
         .locations_card{
             position: relative;
             display: flex;
@@ -570,6 +578,9 @@ html{
             padding:25px;
 
             width:39%;
+            .telefon{
+                margin-top: 7px;
+            }
             img{
                 margin-right: 25px;
                 height:70px;
@@ -579,9 +590,17 @@ html{
                 font-size: 1.4rem;
                 font-weight: bold;
             }
+            .vreme{
+                font-size: 1rem;
+                margin-top: 7px;
+            }
             a{
                 color:$black;
                 text-decoration: none;
+            }
+
+            i{
+                margin-right:4px;
             }
             .number{
                 position:absolute;
@@ -598,6 +617,9 @@ html{
                 border-radius: 50%;
                 color:$white
             }
+        }
+        h1{
+            width:100%;
         }
     }
 
