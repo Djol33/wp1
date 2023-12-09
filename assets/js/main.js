@@ -16,6 +16,7 @@
 
     addNews()
     validateContactForm()
+    ourCoffee()
 }
 else if(this.window.location.pathname =="/locations.html"){
     locationInfo()
@@ -47,12 +48,16 @@ function dinamickiMeni(){
         element.classList.add("nav-element")
         a.innerHTML += key[1]
         a.innerHTML += key[0];
-        
  
  
         if(trenutnaStranicaPodudaraSe(value)){
             element.classList.add("border-btm")
         }
+        else if(window.location.pathname =="/" && value=="index.html"){
+            element.classList.add("border-btm")
+
+        }
+ 
 
         element.appendChild(a)
         ul.appendChild(element)
@@ -350,6 +355,7 @@ function validateContactForm(){
     let sub = document.querySelector("#sub")
     let cover = document.querySelector("#abs");
     let dropandcheck = document.querySelector("#dropandcheck")
+    let cb = document.querySelector("#checkbox_terms")
     {
         // block for adding select and check
         let sel = document.createElement("select")
@@ -421,7 +427,21 @@ function validateContactForm(){
         return false;
     }
 
-
+cb.addEventListener("input", function(){
+    
+    if(this.checked){
+        if(document.querySelector("#err_star")) document.querySelector("#err_star").remove()
+    } 
+    else{
+        if(!document.querySelector("#err_star")){
+        let star = document.createElement("span")
+        star.style.color = "red"
+        star.id = "err_star"
+        star.innerHTML="*"
+        this.insertAdjacentElement("afterend", star)
+        }
+    }
+})
     form.addEventListener("input", function(){
  
         let submit = document.querySelector("#sub")
@@ -441,24 +461,27 @@ function validateContactForm(){
         }
     })
     cover.addEventListener("click", function(){
-        let submit = document.querySelector("#sub")
+       
+        var event = new Event('input', {
+            bubbles: true,
+            cancelable: true
+          });
+        let input = form.querySelectorAll("input")
+        let text = form.querySelector("textarea")
+        let select = form.querySelector("select")
+        input.forEach((element)=>{
 
-        if(city() && name_val() && lname_val && email_val() && question_val() && checkedToS() ){
- 
-            cover.style.zIndex=-1;
-            if(document.querySelector("#err_sub"))  document.querySelector("#err_sub").remove()
-        }
-        else{
-            if(!document.querySelector("#err_sub")){ 
-            let p  = document.createElement("p")
-            p.id = "err_sub"
-            p.innerHTML = "All Fields are required"
-            submit.insertAdjacentElement("beforebegin", p)
-            cover.style.zIndex = 5;
-            }
-        }
+              element.dispatchEvent(event)
+        })
+        text.dispatchEvent(event)
+        select.dispatchEvent(event)
+
     })
     sel.addEventListener("blur", function(){
+        sel_city_err()
+
+    })
+    sel.addEventListener("input", function(){
         sel_city_err()
 
     })
@@ -1071,3 +1094,40 @@ function locationInfo(){
     
 }
  
+function ourCoffee(){
+    let coffee = {
+        Espresso:{
+            img:"espresso.png",
+            alt:"espresso"
+        },
+        Doppio:{
+            img:"doppio.png",
+            alt:"doppio"
+          },
+        Cortado:{
+            img:"cortado.png",
+            alt:"cortado"
+
+        },
+        "Latte Macchiato":{
+            img:"latte-macchiato.png",
+            alt:"latte-macchiato"
+        }
+
+    }
+    let coffee_holder = document.querySelector("#coffee")
+    for(const [key,value] of Object.entries(coffee)){
+
+        let coffee_card = document.createElement("div")
+        coffee_card.classList.add("coffee_card")
+        let img = document.createElement("img")
+        img.src = `assets/images/${value.img}`
+        img.alt = value.alt
+        let p =document.createElement("p")
+        p.innerHTML = key;
+        coffee_card.appendChild(img)
+        coffee_card.appendChild(p)
+        coffee_holder.appendChild(coffee_card)
+
+    }
+}
