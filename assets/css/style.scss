@@ -632,6 +632,36 @@ html{
 
 }
 
+#coffee{
+    padding:25px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    #header{
+        @include header;
+       }
+    .coffee_card{
+        position:relative;
+        width:20%;
+        img{
+            width:100%;
+        }
+        p{
+            text-align: center;
+            width:100%;
+            position:absolute;
+            padding:10px;
+            box-sizing: border-box;
+            bottom:0px;
+            left:0px;
+            color:$white;
+            background-color: $backgroundLighter;
+            border-radius: 25px;
+        }
+    }
+}
 
 
  @import "responsive.scss"

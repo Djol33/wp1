@@ -124,6 +124,13 @@
         }
     }
 
+    #coffee{
+    .coffee_card{
+        width:45%;
+    }
+
+    }
+
 }
 
 @media screen and (max-width:480px) {
@@ -275,5 +282,11 @@
             display: none;
         }
     }
-
+    #coffee{
+        justify-content: center;
+        .coffee_card{
+            width:90%;
+        }
+    
+        }
 }  

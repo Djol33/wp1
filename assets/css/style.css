@@ -589,6 +589,41 @@ html {
   margin-top: 25px;
 }
 
+#coffee {
+  padding: 25px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#coffee #header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+#coffee .coffee_card {
+  position: relative;
+  width: 20%;
+}
+#coffee .coffee_card img {
+  width: 100%;
+}
+#coffee .coffee_card p {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  padding: 10px;
+  box-sizing: border-box;
+  bottom: 0px;
+  left: 0px;
+  color: #f2f2f2;
+  background-color: #002a54;
+  border-radius: 25px;
+}
+
 @media screen and (max-width: 1366px) {
   html #mission #mission-holder {
     width: 100% !important;
@@ -678,6 +713,9 @@ html {
   }
   #info img {
     height: 150px;
+  }
+  #coffee .coffee_card {
+    width: 45%;
   }
 }
 @media screen and (max-width: 480px) {
@@ -805,5 +843,11 @@ html {
   }
   #info img {
     display: none;
+  }
+  #coffee {
+    justify-content: center;
+  }
+  #coffee .coffee_card {
+    width: 90%;
   }
 }/*# sourceMappingURL=style.css.map */
