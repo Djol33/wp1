@@ -458,7 +458,7 @@ function validateContactForm(){
             }
         }
     })
-    sel.addEventListener("change", function(){
+    sel.addEventListener("blur", function(){
         sel_city_err()
 
     })
@@ -707,7 +707,7 @@ function caffeeLocation(){
             rate:3
           }
         },
-        "Novi Sad": {
+        "Uzice": {
           0: {
             address: "Bulevar Mihajla Pupina 9",
             p_vreme: "08:30",
@@ -800,7 +800,7 @@ function caffeeLocation(){
           0: {
             address: "Gandijeva 3",
             p_vreme: "08:30",
-            k_vreme: "16:00",
+            k_vreme: "11:00",
             kontakt: "0645556677",
             rate:3
           },
@@ -816,6 +816,7 @@ function caffeeLocation(){
             number:1
         }
       };
+      
       let loc = document.querySelector("#location")
       let p_filter = document.createElement("p")
       p_filter.id="filter"
@@ -836,140 +837,205 @@ function caffeeLocation(){
       })
       
       loc.appendChild(select)
-      // OPEN NOW 
-      let checkbox = document.createElement("p")
-      checkbox.innerHTML = "Open Now"
-      checkbox.classList.add("checkbox")
-      loc.appendChild(checkbox)
-      let z = 0
-      checkbox.addEventListener("click", function(){
+      let OpenNow = document.createElement("p")
+      OpenNow.classList.add("checkbox")
+ 
+      OpenNow.addEventListener("click",function(){
+ 
+        this.classList.toggle("active")
+        var event = new Event('input', {
+            bubbles: true,
+            cancelable: true
+          });
+          select.dispatchEvent(event)
 
-        z+=1
-
-        checkbox.classList.toggle("active")
-        if(z%2 == 1){
-            let cards = document.querySelectorAll(".locations_card")
-
-            cards.forEach((element)=>{
-                let time = element.querySelector(".workHours")
-                let splitTime = time.innerHTML.split(":")
-                splitTime = splitTime.map((element)=>{return parseInt(element)})
-
-                let day = new Date()
-                let hours = parseInt(day.getHours())
-                let minutes = parseInt(day.getMinutes())
-
-                if(splitTime[0]<hours && hours <splitTime[2]){
-                    element.style.display = "flex"
-                }
-                else if(splitTime[0] == hours){
-                    if(splitTime[1] <minutes){
-                        element.style.display = "flex"
-                    }
-                    else{
-                        element.style.display = "none"
-                    }
-                }
-                else if( splitTime[2] == hours){
-                    if(minutes <splitTime[3]){
-                        element.style.display = "flex"
-                    }
-                    else{
-                        element.style.display = "none"
-                    }
-                }
-                else{
-                    element.style.display = "none"
-                }
-
-
-
-
-            })
-        }
-        else{
-            let cards = document.querySelectorAll(".locations_card")
-            cards.forEach((element)=>{
-                element.style.display = "flex"
-            })
-        }
       })
+      //Provera da li je ukljucen OpenNow
 
-      select.addEventListener("input", function(){
-        let list = loc.querySelectorAll(".location_div")
-        list.forEach((element)=>{
-            if(element.getAttribute("data-bs-city") == this.value){
-                element.style.display ="flex"
-            }
-            else if(this.value == "All Cities"){
-                element.style.display = "flex"
-            }
-            else{
-                element.style.display="none"
-            }
-        })
-        let header = loc.querySelectorAll("h1")
-        header.forEach((element)=>{
-            if(element.innerText == this.value){
-                element.style.display ="flex"
-            }
-            else if(this.value == "All Cities"){
-                element.style.display = "flex"
-            }
-            else{
-                element.style.display="none"
-            }
-            
-        })
-      })
-      Object.keys(citiesInfo).forEach((element, i)=>{
-        if(element != "staticElement"){
-        let header = document.createElement("h1")
-        header.innerText = element
-        loc.appendChild(header)
-        let holder_caffee = document.createElement("div")
-        holder_caffee.setAttribute("data-bs-city", element)
-        Object.values(citiesInfo[element]).forEach((el)=>{
-          let card = document.createElement("div")
-          card.classList.add("locations_card")
-          let adr = document.createElement("p")
-          adr.classList.add("adr")
-          adr.innerHTML = el["address"]
-          card.setAttribute("data-bs-rate", el["rate"])
-          
-          let holder_div = document.createElement("div")
-          holder_div.appendChild(adr)
-          let workHours = document.createElement("p")
-          workHours.classList.add("workHours")
-          workHours.innerHTML = el["p_vreme"] + " : " + el["k_vreme"]
-          holder_div.appendChild(workHours)
+      function checked(){
+        let obj = document.querySelector(".active")
+        if(obj) return true
+        return false
+      }
+      OpenNow.innerText = "Open Now"
+      loc.appendChild(OpenNow)
+      let city_group_div = document.createElement("div")
+      city_group_div.id = "cityList"
+      loc.appendChild(city_group_div)
+      for(let z in citiesInfo){
+        let divCity = document.createElement("div")
+        divCity.classList.add("location_div")
+        if(z!="staticElement"){
+  
+            divCity.classList.add(z);
+            let header = document.createElement("h1")
+            header.id = z;
+            header.innerText = z
+            divCity.appendChild(header)
+            city_group_div.appendChild(divCity)
+        }
+        for(const [key,x] of Object.entries(citiesInfo[z])){
+ 
+            for(let i in key){
+                let card = document.createElement("div")
+                card.classList.add("locations_card")
+                let podaci = document.createElement("div")
+                
+                // SLIKA
+                let img =document.createElement("img")
+                img.src = "assets/images/cog.png"
+                img.alt = "cog-logo"
 
-            //phone
-            let link = document.createElement("a")
-            link.href=`tel:${el["kontakt"]}`
+                //ulica
+                let ulica = document.createElement("h2")
+                ulica.classList.add("adr")
+                ulica.innerText = x.address
 
-            let phone = document.createElement("i")
-            phone.classList.add("fa-solid","fa-phone")
-            link.appendChild(phone)
-            link.innerHTML += " " + el["kontakt"]
-            holder_div.appendChild(link)
-            let img = document.createElement("img")
-            img.src = "assets/images/cog.png"
-            card.appendChild(img)
-            card.appendChild(holder_div)
-            let number = document.createElement("div")
-            number.classList.add("number")
-            number.innerHTML = citiesInfo["staticElement"]["number"]++
-            card.appendChild(number)
-          holder_caffee.appendChild(card)
-        })
-        holder_caffee.classList.add("location_div")
-        header.insertAdjacentElement("afterend", holder_caffee)
+                //vreme
+                let vreme = document.createElement("p")
+                vreme.innerText = x.p_vreme + " " + x.k_vreme
+                vreme.classList.add("vreme")
+                    //Telefon
+                    let telefon = document.createElement("p")
+                    telefon.classList.add("telefon")
+                    let a = document.createElement("a");
+                    let i = document.createElement("i");
+                    i.classList.add("fa-solid", "fa-phone");
+                    let span = document.createElement("span")
+                    span.innerText = x.kontakt
+                    a.appendChild(i)
+                    a.appendChild(span)
+                    telefon.appendChild(a)
+                
+                podaci.appendChild(ulica)
+                podaci.appendChild(vreme)
+                podaci.appendChild(telefon)
+                
+                card.appendChild(img)
+                card.appendChild(podaci)
+                
+                divCity.appendChild(card)
+
+            }
+        }
+
+
 
       }
-    }
-      )
+    select.addEventListener("input",function(){
+ 
+        city_group_div.innerHTML ="";
+        for(let z in citiesInfo){
+            if(z!= this.value && this.value != "All Cities") continue
 
+            let divCity = document.createElement("div")
+            divCity.classList.add("location_div")
+            if(z!="staticElement"){
+      
+                divCity.classList.add(z);
+                let header = document.createElement("h1")
+                header.id = z;
+                header.innerText = z
+                divCity.appendChild(header)
+                city_group_div.appendChild(divCity)
+            }
+            for(const [key,x] of Object.entries(citiesInfo[z])){
+                if(z=="staticElement") continue;
+                for(let i in key){
+                    let card = document.createElement("div")
+                    card.classList.add("locations_card")
+                    let podaci = document.createElement("div")
+                    if(checked()){
+                        
+                        let day = new Date()
+                        let hours = parseInt(day.getHours())
+                        let minutes = parseInt(day.getMinutes())
+                                let p_vreme = (x.p_vreme)
+ 
+                                p_vreme = p_vreme.split(":")
+                                p_vreme = p_vreme.map((element)=>{
+                                    return (parseInt(element))
+                                })
+                                k_vreme = x.k_vreme.split(":")
+                                k_vreme.map((element)=>{
+                                    return (parseInt(element))
+                                })
+                                if(p_vreme[0] < hours && hours<k_vreme[0]){}
+                                else if(p_vreme[0] == hours){
+                                    if(p_vreme[1] > minutes) continue;
+                                }
+                                else if(k_vreme[0] == hours){
+                                    if(k_vreme[1] < minutes) continue
+                                }
+                                else{
+                                    continue;
+                                }
+        
+                            }
+                    // SLIKA
+                    let img =document.createElement("img")
+                    img.src = "assets/images/cog.png"
+                    img.alt = "cog-logo"
+    
+                    //ulica
+                    let ulica = document.createElement("h2")
+                    ulica.classList.add("adr")
+                    ulica.innerText = x.address
+    
+                    //vreme
+                    let vreme = document.createElement("p")
+
+                    vreme.innerText = x.p_vreme + " " + x.k_vreme
+                    vreme.classList.toggle("vreme")
+
+                    //Telefon
+                    let telefon = document.createElement("p")
+                    telefon.classList.add("telefon")
+                    let a = document.createElement("a");
+                    let i = document.createElement("i");
+                    i.classList.add("fa-solid", "fa-phone");
+                    let span = document.createElement("span")
+                    span.innerText = x.kontakt
+                    a.appendChild(i)
+                    a.appendChild(span)
+                    telefon.appendChild(a)
+    
+    
+                    
+                    podaci.appendChild(ulica)
+                    podaci.appendChild(vreme)
+                    podaci.appendChild(telefon)
+                    
+                    card.appendChild(img)
+                    card.appendChild(podaci)
+                    
+                    divCity.appendChild(card)
+    
+                }
+            }
+    
+ 
+ 
+          }
+          checkForEmptyCards()
+    })
+
+    function checkForEmptyCards(){
+        let cities =  document.querySelectorAll(".location_div");
+        cities.forEach((element) =>{
+            if(!element.querySelector(".locations_card")){
+                let nemaGradova = document.createElement("p")
+                nemaGradova.innerText = "Nothing is open"
+                nemaGradova.classList.add("nothingOpen")
+                element.appendChild(nemaGradova)
+            }
+        })
+ 
+    }
+   
+
+    
+   
 
 }
 function locationInfo(){
@@ -989,7 +1055,7 @@ function locationInfo(){
     // Email
     let email = $("<h2>Email contact</h2>");
     email.addClass("head");
-    let emailAddress = $("<p>email@gmail.com</p>");
+    let emailAddress = $("<p>&#x65;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</p>");
     emailAddress.addClass("text");
     
     // Phone
